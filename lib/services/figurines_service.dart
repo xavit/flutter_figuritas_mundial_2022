@@ -18,8 +18,8 @@ class FigurinesService {
     final response =
         await http.post(url, headers: getHeaders(), body: json.encode(body));
 
-    // print("response ${response.body}");
     // print("response.statusCode: ${response.statusCode}");
+    // print("response ${response.body}");
     if (response.statusCode == 200) {
       return Figurines.fromJson(json.decode(response.body));
     } else {
