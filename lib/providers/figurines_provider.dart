@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bcp/models/figurines_model.dart';
+import 'package:flutter_bcp/services/figurines_service.dart';
 
 class FigurinesProvider with ChangeNotifier {
-  int _counter = 0;
+  Figurines _figurines = Figurines();
 
-  int get counter => _counter;
-
-  void incrementCounter() {
-    _counter++;
+  Future<Figurines> getFigurines() async {
+    final figurines = await FigurinesService().getAllFigurines();
+    _figurines = figurines;
     notifyListeners();
+    return _figurines;
   }
 }
